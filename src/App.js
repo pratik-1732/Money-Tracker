@@ -1,6 +1,24 @@
 import "./App.css";
+import React, { useState } from "react";
 
 function App() {
+  const [name, setName] = useState("");
+  const [datetime, setDatetime] = useState("");
+  const [description, setDescription] = useState("");
+  function addNewTransaction(ev) {
+    ev.preventDefault();
+    const url = process.env.REACT_APP_API_URL + "/transaction";
+
+    fetch(url, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ name, description, datetime }),
+    }).then((response) => {
+      response.json().then((json) => {
+        console.log("result", json);
+      });
+    });
+  }
   return (
     <main>
       {/* page heading */}
@@ -15,13 +33,27 @@ function App() {
       </div>
 
       {/* form for transaction */}
-      <form>
+      <form onSubmit={addNewTransaction}>
         <div className="basic">
-          <input type="text" placeholder="INFO"></input>
-          <input type="datetime-local"></input>
+          <input
+            type="text"
+            value={name}
+            onChange={(ev) => setName(ev.target.value)}
+            placeholder="INFO"
+          ></input>
+          <input
+            type="datetime-local"
+            value={datetime}
+            onChange={(ev) => setDatetime(ev.target.value)}
+          ></input>
         </div>
         <div className="description">
-          <input type="text" placeholder="description"></input>
+          <input
+            type="text"
+            value={description}
+            onChange={(ev) => setDescription(ev.target.value)}
+            placeholder="description"
+          ></input>
         </div>
         <div className="btn">
           <button type="submit">Add New Transaction</button>
