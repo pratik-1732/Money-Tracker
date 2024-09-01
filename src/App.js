@@ -6,7 +6,7 @@ function App() {
       {/* page heading */}
       <div className="heading">
         <h1>Pratik Patil</h1>
-        <div>
+        <div className="details">
           <h3>
             500.<span>00</span> RS
           </h3>
@@ -23,6 +23,9 @@ function App() {
         <div className="description">
           <input type="text" placeholder="description"></input>
         </div>
+        <div className="btn">
+          <button type="submit">Add New Transaction</button>
+        </div>
       </form>
 
       {/* history of transaction */}
@@ -30,7 +33,7 @@ function App() {
         <div className="transaction">
           <div className="left">
             <div className="name">New Phone</div>
-            <div className="description">Bought New I phone</div>
+            <div className="desc">Bought New I phone</div>
           </div>
           <div className="right">
             <div className="price-red">-400 RS</div>
@@ -40,7 +43,7 @@ function App() {
         <div className="transaction">
           <div className="left">
             <div className="name">Bonus</div>
-            <div className="description">money return </div>
+            <div className="desc">money return </div>
           </div>
           <div className="right">
             <div className="price-green">+800 RS</div>
@@ -50,7 +53,7 @@ function App() {
         <div className="transaction">
           <div className="left">
             <div className="name">New Phone</div>
-            <div className="description">Bought New I phone</div>
+            <div className="desc">Bought New I phone</div>
           </div>
           <div className="right">
             <div className="price-red">-400 RS</div>

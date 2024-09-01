@@ -1,38 +1,115 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  background-color: black;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+main {
+  margin: 20px auto;
+  max-width: 600px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* heading  */
+.heading {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.heading h1 {
+  text-align: center;
+  font-size: 3.5rem;
+  margin: 0;
+}
+.heading .details {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* form  */
+
+form {
+  margin-top: 50px;
+  border: 2px solid rgb(180, 175, 175);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+form input {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid rgb(161, 158, 158);
+  border-radius: 0.3rem;
+  color: white;
+  padding: 6px 10px;
+}
+form input[type="datetime-local"] {
+  color: rgb(192, 191, 191);
+}
+.basic {
+  display: flex;
+  gap: 7px;
+  margin: 8px 5px;
+}
+.description {
+  margin: 8px 5px;
+}
+form .btn {
+  margin: 8px 5px;
+}
+form button {
+  width: 100%;
+  border-radius: 5px;
+  border: 0;
+  padding: 6px 5px;
+  background-color: rgb(198, 198, 198);
+  color: black;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* transactions  */
+.history {
+  margin-top: 40px;
+}
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding: 5px;
+  border-top: 1px solid rgb(163, 163, 163);
+}
+.transaction:first-child {
+  border-top: 0;
+}
+.transaction .left {
+  display: flex;
+  flex-direction: column;
+}
+.transaction .left .name {
+  font-size: 1.5rem;
+}
+.transaction .left .desc {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: rgb(163, 163, 163);
+}
+.transaction .right {
+  display: flex;
+  flex-direction: column;
+}
+.transaction .right .price-red {
+  font-size: 1.2rem;
+  color: red;
+}
+.transaction .right .price-green {
+  font-size: 1.2rem;
+  color: green;
+}
+.transaction .right .datetime {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: rgb(163, 163, 163);
 }
