@@ -1,12 +1,15 @@
 import "./App.css";
-import React, { useState } from "react";
 import { useEffect, useState } from "react";
 
 function App() {
   const [name, setName] = useState("");
   const [datetime, setDatetime] = useState("");
   const [description, setDescription] = useState("");
+  const [transactions, setTransactions] = useState("");
 
+  useEffect(() => {
+    getTransactions().then(setTransactions);
+  });
   async function getTransactions() {
     const url = process.env.REACT_APP_API_URL + "/transactions";
     const response = await fetch(url);
@@ -47,7 +50,6 @@ function App() {
           <h3>date time</h3>
         </div>
       </div>
-
       {/* form for transaction */}
       <form onSubmit={addNewTransaction}>
         <div className="basic">
@@ -78,36 +80,26 @@ function App() {
 
       {/* history of transaction */}
       <div className="history">
-        <div className="transaction">
-          <div className="left">
-            <div className="name">New Phone</div>
-            <div className="desc">Bought New I phone</div>
-          </div>
-          <div className="right">
-            <div className="price-red">-400 RS</div>
-            <div className="datetime">1-9-2024 10.45</div>
-          </div>
-        </div>
-        <div className="transaction">
-          <div className="left">
-            <div className="name">Bonus</div>
-            <div className="desc">money return </div>
-          </div>
-          <div className="right">
-            <div className="price-green">+800 RS</div>
-            <div className="datetime">1-9-2024 10.45</div>
-          </div>
-        </div>
-        <div className="transaction">
-          <div className="left">
-            <div className="name">New Phone</div>
-            <div className="desc">Bought New I phone</div>
-          </div>
-          <div className="right">
-            <div className="price-red">-400 RS</div>
-            <div className="datetime">1-9-2024 10.45</div>
-          </div>
-        </div>
+        {transactions.length > 0 &&
+          transactions.map((transaction) => (
+            <div className="transaction">
+              <div className="left">
+                <div className="name">{transaction.name}</div>
+                <div className="desc">{transaction.description}</div>
+              </div>
+              <div className="right">
+                <div
+                  className={
+                    "price-" + (transaction.price > 0 ? "green" : "red")
+                  }
+                >
+                  {transaction.price}
+                  <span>RS</span>
+                </div>
+                <div className="datetime">{transaction.datetime}</div>
+              </div>
+            </div>
+          ))}
       </div>
     </main>
   );
