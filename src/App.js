@@ -38,16 +38,23 @@ function App() {
       });
     });
   }
+  let balance = 0;
+  for (const transaction of transactions) {
+    balance = balance + transaction.price;
+  }
+  balance = balance.toFixed(2);
+  const fraction = balance.split(".")[1];
+  balance = balance.split(".")[0];
   return (
     <main>
       {/* page heading */}
       <div className="heading">
-        <h1>Pratik Patil</h1>
         <div className="details">
-          <h3>
-            500.<span>00</span> RS
+          <h3 className={"remainBalance " + (balance > 0 ? "green" : "red")}>
+            <span className="balance">{balance}</span>.
+            <span className="fraction">{fraction}</span>{" "}
+            <span className="rsspan">₹</span>
           </h3>
-          <h3>date time</h3>
         </div>
       </div>
       {/* form for transaction */}
@@ -94,7 +101,7 @@ function App() {
                   }
                 >
                   {transaction.price}
-                  <span>RS</span>
+                  <span>₹</span>
                 </div>
                 <div className="datetime">{transaction.datetime}</div>
               </div>

@@ -1,6 +1,12 @@
 * {
   box-sizing: border-box;
 }
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
 body {
   background-color: black;
   color: white;
@@ -22,9 +28,23 @@ main {
   font-size: 3.5rem;
   margin: 0;
 }
-.heading .details {
+/* .heading .details {
   display: flex;
   justify-content: space-between;
+} */
+.details .balance {
+  font-size: 3rem;
+}
+.details .fraction {
+  font-size: 1.1rem;
+}
+
+.details .rsspan {
+  font-size: 1.7rem;
+  margin-left: 0.2rem;
+}
+.details h3 {
+  text-align: center;
 }
 
 /* form  */
@@ -112,4 +132,8 @@ form button {
   margin-top: 5px;
   font-size: 0.9rem;
   color: rgb(163, 163, 163);
+}
+.transaction span {
+  font-size: 1.2rem;
+  margin-left: 0.3rem;
 }
